@@ -144,12 +144,33 @@ export class GitHubClient {
         return { html_url: data.html_url, number: data.number }
     }
 
-    // Check if user is a member of the org
+    // Check if authenticated user is a member of the org
     async checkOrgMembership(username: string): Promise<boolean> {
         const org = process.env.GITHUB_ORG || 'techsynergy-io'
         try {
-            await this.request(`/orgs/${org}/members/${username}`)
-            return true
+            // Use the membership endpoint which works for private memberships too
+            const res = await fetch(`${GITHUB_API}/orgs/${org}/members/${username}`, {
+                headers: {
+                    'Authorization': `Bearer ${this.token}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                },
+            })
+            // 204 = is a member, 302 = requester is not org member, 404 = not a member
+            if (res.status === 204 || res.status === 200) return true
+
+            // Fallback: check if user can list the org's repos (proves membership)
+            const orgsRes = await fetch(`${GITHUB_API}/user/orgs`, {
+                headers: {
+                    'Authorization': `Bearer ${this.token}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                },
+            })
+            if (orgsRes.ok) {
+                const orgs = await orgsRes.json()
+                return orgs.some((o: { login: string }) => o.login.toLowerCase() === org.toLowerCase())
+            }
+
+            return false
         } catch {
             return false
         }
