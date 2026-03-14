@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack -p 3850",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
   },
   "dependencies": {
     "@tiptap/extension-code-block": "^3.20.1",
@@ -34,6 +36,7 @@
     "turndown": "^7.2.2"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.17.1",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^22.0.0",
@@ -45,6 +48,7 @@
     "eslint-config-next": "^15.3.0",
     "postcss": "^8.5.0",
     "tailwindcss": "^4.0.0",
-    "typescript": "^5.7.0"
+    "typescript": "^5.7.0",
+    "wrangler": "^4.73.0"
   }
 }
