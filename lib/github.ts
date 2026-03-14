@@ -33,6 +33,7 @@ export class GitHubClient {
                 'Authorization': `Bearer ${this.token}`,
                 'Accept': 'application/vnd.github.v3+json',
                 'Content-Type': 'application/json',
+                'User-Agent': 'TechSynergy-Help-Admin',
                 ...options.headers,
             },
         })
@@ -153,6 +154,7 @@ export class GitHubClient {
                 headers: {
                     'Authorization': `Bearer ${this.token}`,
                     'Accept': 'application/vnd.github.v3+json',
+                    'User-Agent': 'TechSynergy-Help-Admin',
                 },
             })
             // 204 = is a member, 302 = requester is not org member, 404 = not a member
@@ -163,6 +165,7 @@ export class GitHubClient {
                 headers: {
                     'Authorization': `Bearer ${this.token}`,
                     'Accept': 'application/vnd.github.v3+json',
+                    'User-Agent': 'TechSynergy-Help-Admin',
                 },
             })
             if (orgsRes.ok) {
