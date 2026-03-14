@@ -4,6 +4,11 @@
   "name": "techsynergy-help-admin",
   "compatibility_date": "2024-12-30",
   "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    "GITHUB_ORG": "techsynergy-io",
+    "GITHUB_REPO": "techsynergy-io/techsynergy-help-center",
+    "NEXT_PUBLIC_URL": "https://help-admin.techsynergy.io"
+  },
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
