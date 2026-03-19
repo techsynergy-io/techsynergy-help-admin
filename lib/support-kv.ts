@@ -20,10 +20,11 @@ export interface Escalation {
     resolvedBy?: string
 }
 
-async function getKV(): Promise<KVNamespace | null> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function getKV(): Promise<any> {
     try {
         const { env } = await getCloudflareContext()
-        return (env as Record<string, unknown>).SUPPORT_KV as KVNamespace || null
+        return (env as Record<string, unknown>).SUPPORT_KV || null
     } catch {
         return null
     }
