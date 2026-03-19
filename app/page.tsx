@@ -80,6 +80,12 @@ export default function Dashboard() {
                     </div>
                     <div className="flex items-center gap-4">
                         <Link
+                            href="/support"
+                            className="text-sm text-[#535862] hover:text-[#0046ff] transition-colors"
+                        >
+                            Support Messages
+                        </Link>
+                        <Link
                             href="/articles/new"
                             className="bg-[#0046ff] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#001bb7] transition-colors"
                         >

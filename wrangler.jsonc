@@ -9,6 +9,12 @@
     "GITHUB_REPO": "techsynergy-io/techsynergy-help-center",
     "NEXT_PUBLIC_URL": "https://help-admin.techsynergy.io"
   },
+  "kv_namespaces": [
+    {
+      "binding": "SUPPORT_KV",
+      "id": "247ec52383f146eabcd95e4413b7dfb4"
+    }
+  ],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
